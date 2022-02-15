@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/internal_global_navigation"
+    app:startDestination="@id/rankingFragment">
+
+    <fragment
+        android:id="@+id/favoriteFragment"
+        android:name="com.esgi.mymusic.ui.FavoriteFragment"
+        android:label="fragment_favorite"
+        tools:layout="@layout/fragment_favorite" >
+        <action
+            android:id="@+id/action_favoriteFragment_to_albumFragment"
+            app:destination="@id/albumFragment" />
+        <action
+            android:id="@+id/action_favoriteFragment_to_artistFragment"
+            app:destination="@id/artistFragment" />
+        <action
+            android:id="@+id/action_favoriteFragment_to_lyricsFragment2"
+            app:destination="@id/lyricsFragment2" />
+    </fragment>
+    <fragment
+        android:id="@+id/rankingFragment"
+        android:name="com.esgi.mymusic.ui.RankingFragment"
+        android:label="fragment_ranking"
+        tools:layout="@layout/fragment_ranking" >
+        <action
+            android:id="@+id/action_rankingFragment_to_searchFragment"
+            app:destination="@id/searchFragment" />
+        <action
+            android:id="@+id/action_rankingFragment_to_favoriteFragment"
+            app:destination="@id/favoriteFragment" />
+        <action
+            android:id="@+id/action_rankingFragment_to_artistFragment"
+            app:destination="@id/artistFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/searchFragment"
+        android:name="com.esgi.mymusic.ui.SearchFragment"
+        android:label="fragment_search"
+        tools:layout="@layout/fragment_search" >
+        <action
+            android:id="@+id/action_searchFragment_to_artistFragment"
+            app:destination="@id/artistFragment" />
+        <action
+            android:id="@+id/action_searchFragment_to_albumFragment"
+            app:destination="@id/albumFragment" />
+        <action
+            android:id="@+id/action_searchFragment_to_lyricsFragment2"
+            app:destination="@id/lyricsFragment2" />
+    </fragment>
+    <fragment
+        android:id="@+id/albumFragment"
+        android:name="com.esgi.mymusic.ui.AlbumFragment"
+        android:label="fragment_album"
+        tools:layout="@layout/fragment_album" />
+    <fragment
+        android:id="@+id/artistFragment"
+        android:name="com.esgi.mymusic.ui.ArtistFragment"
+        android:label="fragment_artist"
+        tools:layout="@layout/fragment_artist" />
+    <fragment
+        android:id="@+id/lyricsFragment2"
+        android:name="com.esgi.mymusic.ui.LyricsFragment"
+        android:label="fragment_lyrics"
+        tools:layout="@layout/fragment_lyrics" />
+</navigation>

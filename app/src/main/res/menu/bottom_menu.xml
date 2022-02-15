@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/raking_home_icon"
+        android:enabled="true"
+        android:icon="@drawable/ic_accueil_classements"
+        android:title="@string/classements_home_icon_value"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/search_home_icon"
+        android:enabled="true"
+        android:icon="@drawable/ic_accueil_recherche"
+        android:title="@string/recherche_home_icon_value"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/fav_home_icon"
+        android:enabled="true"
+        android:icon="@drawable/ic_accueil_favoris"
+        android:title="@string/favoris_home_icon_value"
+        app:showAsAction="ifRoom" />
+</menu>
