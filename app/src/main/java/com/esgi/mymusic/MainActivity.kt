@@ -20,8 +20,6 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        setupTab()
-
         myToolbar = findViewById(R.id.toolbar_add)
         myToolbar.title = resources.getString(R.string.classements_home_icon_value)
         setSupportActionBar(myToolbar)
@@ -50,16 +48,5 @@ class MainActivity : AppCompatActivity() {
             replace(R.id.fragmentContainerView, fragment)
             commit()
         }
-    }
-
-    fun setupTab(){
-        val viewPager = findViewById<ViewPager>(R.id.my_view_pager)
-        val tabLayout = findViewById<TabLayout>(R.id.my_tab_layout)
-
-        val fragmentAdapter = FragmentAdapter(supportFragmentManager)
-        fragmentAdapter.addFragment(TitlesFragment(), "Titres")
-        fragmentAdapter.addFragment(AlbumFragment(), "Albums")
-        viewPager.adapter = fragmentAdapter
-        tabLayout?.setupWithViewPager(viewPager)
     }
 }
