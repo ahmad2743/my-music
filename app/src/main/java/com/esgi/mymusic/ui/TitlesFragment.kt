@@ -29,11 +29,12 @@ class TitlesFragment : Fragment() {
         val view = inflater.inflate(R.layout.fragment_titles, container, false)
 
         GlobalScope.launch(Dispatchers.Default) {
-            val res = getRankingTracksLists()
+            val res = getRankingTracksLists("us", "itunes", "singles").trending
 
 
             withContext(Dispatchers.Main) {
-                view.findViewById<TextView>(R.id.test).text = res
+                val result = res.map { tranck -> tranck.strTrack}
+                view.findViewById<TextView>(R.id.test).text = result.joinToString { elt -> elt }
             }
         }
 
