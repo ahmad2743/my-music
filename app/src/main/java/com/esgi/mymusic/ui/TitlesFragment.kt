@@ -5,7 +5,14 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import com.esgi.mymusic.R
+import com.esgi.mymusic.data.MusicApiManager.Companion.getRankingTracksLists
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
+import okhttp3.Dispatcher
 
 
 class TitlesFragment : Fragment() {
@@ -19,8 +26,19 @@ class TitlesFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_titles, container, false)
+        val view = inflater.inflate(R.layout.fragment_titles, container, false)
+
+        GlobalScope.launch(Dispatchers.Default) {
+            val res = getRankingTracksLists()
+
+
+            withContext(Dispatchers.Main) {
+                view.findViewById<TextView>(R.id.test).text = res
+            }
+        }
+
+
+        return view
     }
     companion object {
         @JvmStatic

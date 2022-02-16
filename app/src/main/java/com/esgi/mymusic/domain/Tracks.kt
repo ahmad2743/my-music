@@ -1,6 +1,6 @@
 package com.esgi.mymusic.domain
 
-data class TopTenTracksFromArtist(
+data class Tracks(
     val track: List<Track>
 
 )
