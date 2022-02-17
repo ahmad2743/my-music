@@ -6,20 +6,20 @@ import retrofit2.http.Query
 
 interface ApiRepository {
     @GET("trending.php")
-    fun getRankingTracksList(@Query("country") country: String = "us", @Query("type") type: String = "itunes", @Query("format") format: String = "singles") : Deferred<CurrentTrendingSingles>
+    fun RankingTracksList(@Query("country") country: String = "us", @Query("type") type: String = "itunes", @Query("format") format: String = "singles") : Deferred<CurrentTrendingSingles>
     @GET("trending.php")
-    fun getRankingAlbumsList(@Query("country") country: String = "itunes", @Query("type") type: String = "itunes", @Query("format") format: String = "albums") : Deferred<ArrayList<CurrentTrendingAlbums>>
+    fun RankingAlbumsList(@Query("country") country: String = "itunes", @Query("type") type: String = "itunes", @Query("format") format: String = "albums") : Deferred<CurrentTrendingAlbums>
     @GET("album.php")
-    fun getAlbumsFromArtist(@Query("i") value: String) : Deferred<Album>
+    fun getAlbumsFromArtist(@Query("i") value: String) : Deferred<Album> // i = artist id
     @GET("track-top10-mb.php")
-    fun getTopTracksFromArtist(@Query("s") value: String) : Deferred<Tracks>
+    fun getTopTracksFromArtist(@Query("s") value: String) : Deferred<Tracks> // i = artist name
     @GET("search.php")
-    fun getArtistByName(@Query("s") value: String) : Deferred<Artist>
+    fun artistByName(@Query("s") value: String) : Deferred<Artist>
     @GET("searchalbum.php")
-    fun getAllAlbumsByArtistName( @Query("s")value: String) : Deferred<Album>
+    fun allAlbumsByArtistName( @Query("s")value: String) : Deferred<Album>
     @GET("track.php")
-    fun getTrackById(@Query("h") value: String) : Deferred<Tracks>
+    fun trackById(@Query("h") value: String) : Deferred<Tracks>
     @GET("track.php")
-    fun getAllTracksFromAlbum(@Query("m") value: String): Deferred<Tracks>
+    fun allTracksFromAlbumId(@Query("m") value: String): Deferred<Tracks> //
 
 }

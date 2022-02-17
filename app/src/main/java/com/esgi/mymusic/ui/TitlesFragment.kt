@@ -7,7 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import com.esgi.mymusic.R
-import com.esgi.mymusic.data.MusicApiManager.Companion.getRankingTracksLists
+import com.esgi.mymusic.data.MusicApiManager.Companion.getRankingTracksList
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
@@ -29,7 +29,8 @@ class TitlesFragment : Fragment() {
         val view = inflater.inflate(R.layout.fragment_titles, container, false)
 
         GlobalScope.launch(Dispatchers.Default) {
-            val res = getRankingTracksLists("us", "itunes", "singles").trending
+            val res = getRankingTracksList("us", "itunes", "singles").trending
+
 
 
             withContext(Dispatchers.Main) {

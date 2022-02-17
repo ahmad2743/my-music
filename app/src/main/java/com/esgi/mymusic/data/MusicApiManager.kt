@@ -1,17 +1,10 @@
 package com.esgi.mymusic.data
 
-import android.util.Log
-import android.widget.TextView
-import com.esgi.mymusic.R
+import android.provider.MediaStore
 import com.esgi.mymusic.domain.*
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 import retrofit2.*
 import retrofit2.converter.gson.GsonConverterFactory
-import kotlin.coroutines.CoroutineContext
 
 class MusicApiManager {
 
@@ -28,10 +21,38 @@ class MusicApiManager {
             .build()
             .create(ApiRepository::class.java)
 
-        suspend fun getRankingTracksLists(county: String, type: String, format: String): CurrentTrendingSingles {
-            return retrofitBuilder.getRankingTracksList(county, type, format).await()
+        suspend fun getRankingTracksList(county: String, type: String, format: String): CurrentTrendingSingles {
+            return retrofitBuilder.RankingTracksList(county, type, format).await()
+        }
+
+        suspend fun getRankingAlbumList(county: String, type: String, format: String): CurrentTrendingAlbums {
+            return retrofitBuilder.RankingAlbumsList(county, type, format).await()
 
         }
+
+        suspend fun getAlbumFromArtistId(id: String) : Album {
+            return retrofitBuilder.getAlbumsFromArtist(id).await()
+        }
+
+        suspend fun getTopTracksFromArtisName(name: String) : Tracks {
+            return retrofitBuilder.getTopTracksFromArtist(name).await()
+        }
+
+        suspend fun getArtistByName(name: String) : Artist {
+            return  retrofitBuilder.artistByName(name).await()
+        }
+
+        suspend fun getAllAlbumFromArtisName(name: String) : Album {
+            return retrofitBuilder.allAlbumsByArtistName(name).await()
+        }
+
+        suspend fun getTrackById(id: String) : Tracks {
+            return retrofitBuilder.trackById(id).await()
+        }
+
+        suspend fun getAllTrackFromAlbumId(id: String) : Tracks {
+            return retrofitBuilder.allTracksFromAlbumId(id).await()
+        }
     }
-    }
+}
 
