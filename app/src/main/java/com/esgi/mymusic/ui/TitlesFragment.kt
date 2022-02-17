@@ -52,8 +52,6 @@ class TitlesFragment : Fragment() {
                 }
 
             }
-
-
     }
 
     companion object {

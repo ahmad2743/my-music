@@ -1,16 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.AlbumFragment">
-
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:id="@+id/album_ranking"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/ranking_album_recycler_view"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="les albums " />
+        android:layout_height="match_parent" />
 
-</ScrollView>
+
+</LinearLayout>
