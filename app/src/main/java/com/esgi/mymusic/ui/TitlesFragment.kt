@@ -47,8 +47,8 @@ class TitlesFragment : Fragment() {
                     linearLayoutManager = LinearLayoutManager(context)
                     myAdapter = RankingAdapter(requireContext(), res)
                     myAdapter.notifyDataSetChanged()
+                    recycle!!.adapter = myAdapter
                     recycle!!.layoutManager = linearLayoutManager
-                    recycle.adapter = myAdapter
                 }
 
             }
