@@ -40,7 +40,7 @@ class TitlesFragment : Fragment() {
     }
     private fun updateView(){
             GlobalScope.launch(Dispatchers.Default) {
-                 val res = getRankingTracksList("us", "itunes", "singles").trending.map { elt -> elt }
+                 val res = getRankingTracksList("us", "itunes", "singles").trending
 
                 withContext(Dispatchers.Main){
                     val recycle = view?.findViewById<RecyclerView>(R.id.ranking_track_recycler_view)
