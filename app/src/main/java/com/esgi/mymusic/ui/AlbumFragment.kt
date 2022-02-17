@@ -29,19 +29,19 @@ class AlbumFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_album, container, false)
+        updateView()
+        return view
+    }
 
+    private fun updateView() {
         GlobalScope.launch(Dispatchers.Default) {
             val res = MusicApiManager.getRankingAlbumList("us", "itunes", "singles").trending
-
-
-
             withContext(Dispatchers.Main) {
                 val result = res.map { album -> album.strAlbum}
-                view.findViewById<TextView>(R.id.album_ranking).text = result.joinToString { elt -> elt }
+                view?.findViewById<TextView>(R.id.album_ranking)?.text = result.joinToString { elt -> elt }
             }
         }
 
-        return view
     }
 
     companion object {
