@@ -1,5 +1,10 @@
 package com.esgi.mymusic.domain
 
+import android.os.Parcelable
+import kotlinx.parcelize.Parcelize
+import kotlinx.parcelize.RawValue
+
+@Parcelize
 data class TrendingSingle(
     val dateAdded: String,
     val idAlbum: String,
@@ -10,13 +15,13 @@ data class TrendingSingle(
     val intWeek: String,
     val strAlbum: String,
     val strAlbumMBID: String,
-    val strAlbumThumb: Any,
+    val strAlbumThumb: @RawValue Any,
     val strArtist: String,
     val strArtistMBID: String,
-    val strArtistThumb: Any,
+    val strArtistThumb: @RawValue Any,
     val strCountry: String,
     val strTrack: String,
     val strTrackMBID: String,
     val strTrackThumb: String,
     val strType: String
-)
+) : Parcelable

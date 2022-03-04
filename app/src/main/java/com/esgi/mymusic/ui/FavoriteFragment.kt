@@ -35,7 +35,6 @@ class FavoriteFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val view = inflater.inflate(R.layout.fragment_favorite, container, false)
-        //activity?.setTitle(resources.getString(R.string.favoris_home_icon_value))
         return view
     }
 

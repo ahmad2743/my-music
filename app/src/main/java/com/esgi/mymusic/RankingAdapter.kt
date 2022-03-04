@@ -1,18 +1,28 @@
 package com.esgi.mymusic
 
 import android.content.Context
+import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.OnReceiveContentListener
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
+import com.esgi.mymusic.data.MusicApiManager
 import com.esgi.mymusic.domain.TrendingSingle
 import com.squareup.picasso.Picasso
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
-class RankingAdapter(val context: Context, val myList: List<TrendingSingle>) : RecyclerView.Adapter<RankingAdapter.ViewHolder>() {
+class RankingAdapter(val context: Context, val myList: List<TrendingSingle>,
+                     private val listener: onItemClickListener ) : RecyclerView.Adapter<RankingAdapter.ViewHolder>() {
 
-    class ViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
+
+    inner class ViewHolder(itemView: View): RecyclerView.ViewHolder(itemView), View.OnClickListener {
         var artistName: TextView
         var trackTitle: TextView
         var position: TextView
@@ -22,8 +32,21 @@ class RankingAdapter(val context: Context, val myList: List<TrendingSingle>) : R
             trackTitle = itemView.findViewById(R.id.track_title)
             artistName = itemView.findViewById(R.id.track_artist)
             position = itemView.findViewById(R.id.number_item)
-           img = itemView.findViewById(R.id.track_image)
+            img = itemView.findViewById(R.id.track_image)
+            artistName.setOnClickListener(this)
         }
+
+        override fun onClick(v: View?) {
+        val position: Int = adapterPosition
+            if(position != RecyclerView.NO_POSITION){
+                listener.onItemClick(position)
+            }
+        }
+
+    }
+
+    interface onItemClickListener{
+        fun onItemClick(position: Int)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -37,6 +60,7 @@ class RankingAdapter(val context: Context, val myList: List<TrendingSingle>) : R
         holder.trackTitle.text = myList[position].strTrack
         holder.position.text = pos.toString()
         Picasso.get().load(myList[position]?.strTrackThumb.toString()).into(holder.img)
+
     }
 
     override fun getItemCount(): Int {

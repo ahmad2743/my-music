@@ -41,6 +41,9 @@ class MusicApiManager {
         suspend fun getArtistByName(name: String) : Artist {
             return  retrofitBuilder.artistByName(name).await()
         }
+        suspend fun getArtistById(id: String) : Artist {
+            return retrofitBuilder.getArtistById(id).await()
+        }
 
         suspend fun getAllAlbumFromArtisName(name: String) : Album {
             return retrofitBuilder.allAlbumsByArtistName(name).await()
@@ -52,6 +55,9 @@ class MusicApiManager {
 
         suspend fun getAllTrackFromAlbumId(id: String) : Tracks {
             return retrofitBuilder.allTracksFromAlbumId(id).await()
+        }
+        suspend fun getAlbumInfos(id: String) : Album {
+            return retrofitBuilder.getAlbumInformations(id).await()
         }
     }
 }

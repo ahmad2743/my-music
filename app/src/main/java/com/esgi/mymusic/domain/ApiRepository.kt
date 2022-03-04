@@ -15,11 +15,15 @@ interface ApiRepository {
     fun getTopTracksFromArtist(@Query("s") value: String) : Deferred<Tracks> // i = artist name
     @GET("search.php")
     fun artistByName(@Query("s") value: String) : Deferred<Artist>
+    @GET("artist.php")
+    fun getArtistById(@Query("i") id: String) : Deferred<Artist>
     @GET("searchalbum.php")
     fun allAlbumsByArtistName( @Query("s")value: String) : Deferred<Album>
     @GET("track.php")
     fun trackById(@Query("h") value: String) : Deferred<Tracks>
     @GET("track.php")
     fun allTracksFromAlbumId(@Query("m") value: String): Deferred<Tracks> //
+    @GET("album.php")
+    fun getAlbumInformations(@Query("m") value: String): Deferred<Album>
 
 }

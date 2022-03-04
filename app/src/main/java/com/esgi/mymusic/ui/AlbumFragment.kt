@@ -1,6 +1,8 @@
 package com.esgi.mymusic.ui
 
+import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -8,19 +10,23 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.esgi.mymusic.AlbumRankingAdapter
-import com.esgi.mymusic.R
-import com.esgi.mymusic.RankingAdapter
+import com.esgi.mymusic.*
 import com.esgi.mymusic.data.MusicApiManager
+import com.esgi.mymusic.domain.CurrentTrendingAlbums
+import com.esgi.mymusic.domain.CurrentTrendingSingles
+import com.esgi.mymusic.domain.TrendingAlbum
+import com.esgi.mymusic.domain.TrendingSingle
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
 
-class AlbumFragment : Fragment() {
+class AlbumFragment : Fragment(), AlbumRankingAdapter.onAlbumItemClickListener {
     lateinit var linearLayoutManager: LinearLayoutManager
     lateinit var myAdapter: AlbumRankingAdapter
+    var res: List<TrendingAlbum>? = null
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -41,12 +47,12 @@ class AlbumFragment : Fragment() {
 
     private fun updateView(){
         GlobalScope.launch(Dispatchers.Default) {
-            val res = MusicApiManager.getRankingAlbumList("us", "itunes", "singles").trending
+            res = MusicApiManager.getRankingAlbumList("us", "itunes", "singles").trending
 
             withContext(Dispatchers.Main){
                 val recycle = view?.findViewById<RecyclerView>(R.id.ranking_album_recycler_view)
                 linearLayoutManager = LinearLayoutManager(context)
-                myAdapter = AlbumRankingAdapter(requireContext(), res)
+                myAdapter = AlbumRankingAdapter(requireContext(), res!!, this@AlbumFragment)
                 myAdapter.notifyDataSetChanged()
                 recycle!!.adapter = myAdapter
                 recycle!!.layoutManager = linearLayoutManager
@@ -64,5 +70,13 @@ class AlbumFragment : Fragment() {
 
                 }
             }
+    }
+
+    override fun onItemClick(position: Int) {
+        val intent = Intent(context, AlbumDetailActivity::class.java)
+        val bundle = Bundle()
+        bundle.putParcelable("res", res?.get(position))
+        intent.putExtra("myBundle", bundle)
+        startActivity(intent)
     }
 }

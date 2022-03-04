@@ -20,4 +20,13 @@
         <item name="android:textColor">@color/primary_color</item>
 
     </style>
+
+    <style name="Theme.MyMusic.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="Theme.MyMusic.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="Theme.MyMusic.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 </resources>

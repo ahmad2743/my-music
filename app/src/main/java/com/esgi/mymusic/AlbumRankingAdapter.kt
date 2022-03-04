@@ -7,12 +7,14 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.esgi.mymusic.AlbumRankingAdapter.ViewHolder
 import com.esgi.mymusic.domain.TrendingAlbum
 import com.squareup.picasso.Picasso
 
-class AlbumRankingAdapter(val context: Context, val myList: List<TrendingAlbum>) : RecyclerView.Adapter<AlbumRankingAdapter.ViewHolder>() {
+class AlbumRankingAdapter(val context: Context, val myList: List<TrendingAlbum>, private val listener: onAlbumItemClickListener
+) : RecyclerView.Adapter<ViewHolder>() {
 
-    class ViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
+    inner class ViewHolder(itemView: View): RecyclerView.ViewHolder(itemView), View.OnClickListener {
         var artistName: TextView
         var trackTitle: TextView
         var position: TextView
@@ -23,7 +25,20 @@ class AlbumRankingAdapter(val context: Context, val myList: List<TrendingAlbum>)
             artistName = itemView.findViewById(R.id.track_artist)
             position = itemView.findViewById(R.id.number_item)
             img = itemView.findViewById(R.id.track_image)
+            img.setOnClickListener(this)
         }
+
+        override fun onClick(v: View?) {
+            val position: Int = adapterPosition
+            if(position != RecyclerView.NO_POSITION){
+                listener.onItemClick(position)
+
+            }
+        }
+    }
+
+    interface onAlbumItemClickListener{
+        fun onItemClick(position: Int)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
