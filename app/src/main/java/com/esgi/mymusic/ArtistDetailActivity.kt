@@ -28,6 +28,6 @@ class ArtistDetailActivity : AppCompatActivity() {
     private fun updateView(){
         val bundle = intent.getBundleExtra("myBundle")
         val res = bundle?.getParcelable<ArtistDetail>("res")
-        vText.text = res?.strArtist
+        //vText.text = res?.strArtist
     }
 }
