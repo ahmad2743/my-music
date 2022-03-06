@@ -76,15 +76,6 @@ class AlbumDetailActivity : AppCompatActivity() {
                 recycle!!.layoutManager = linearLayoutManager
 
 
-
-
-
-
-
-
-
-
-
         }
         }
     }

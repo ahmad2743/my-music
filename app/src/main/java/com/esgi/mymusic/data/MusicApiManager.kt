@@ -8,9 +8,6 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 class MusicApiManager {
 
-
-
-
     companion  object{
 
         private val BASE_URL = "https://theaudiodb.com/api/v1/json/523532/"

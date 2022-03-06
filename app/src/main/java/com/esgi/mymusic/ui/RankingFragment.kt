@@ -9,7 +9,6 @@ import androidx.viewpager.widget.ViewPager
 import com.esgi.mymusic.R
 import com.google.android.material.tabs.TabLayout
 
-
 class RankingFragment : Fragment() {
 
 

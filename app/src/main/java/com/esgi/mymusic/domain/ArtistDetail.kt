@@ -1,16 +1,22 @@
 package com.esgi.mymusic.domain
 
 import android.os.Parcelable
+import androidx.room.ColumnInfo
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 import kotlinx.parcelize.Parcelize
 import kotlinx.parcelize.RawValue
 
 @Parcelize
+@Entity
 data class ArtistDetail(
-    val idArtist: String?,
+    @PrimaryKey
+    @ColumnInfo(name = "id")
+    val idArtist: String,
     val idLabel: String?,
     val intBornYear: String?,
     val intCharted: String?,
-    val intDiedYear: @RawValue Any?,
+    val intDiedYear: String?,
     val intFormedYear: String?,
     val intMembers: String?,
     val strArtist: String?,
@@ -23,31 +29,31 @@ data class ArtistDetail(
     val strArtistFanart3: String?,
     val strArtistFanart4: String?,
     val strArtistLogo: String?,
-    val strArtistStripped: @RawValue Any?,
+    val strArtistStripped: String?,
     val strArtistThumb: String?,
     val strArtistWideThumb: String?,
-    val strBiographyCN: @RawValue Any?,
+    val strBiographyCN: String?,
     val strBiographyDE: String?,
     val strBiographyEN: String?,
     val strBiographyES: String?,
     val strBiographyFR: String?,
-    val strBiographyHU: @RawValue Any?,
-    val strBiographyIL: @RawValue Any?,
+    val strBiographyHU: String?,
+    val strBiographyIL: String?,
     val strBiographyIT: String?,
-    val strBiographyJP: @RawValue Any?,
-    val strBiographyNL: @RawValue Any?,
-    val strBiographyNO: @RawValue Any?,
-    val strBiographyPL: @RawValue Any?,
-    val strBiographyPT: @RawValue Any?,
-    val strBiographyRU: @RawValue Any?,
-    val strBiographySE: @RawValue Any?,
+    val strBiographyJP: String?,
+    val strBiographyNL: String?,
+    val strBiographyNO: String?,
+    val strBiographyPL: String?,
+    val strBiographyPT: String?,
+    val strBiographyRU: String?,
+    val strBiographySE: String?,
     val strCountry: String?,
     val strCountryCode: String?,
-    val strDisbanded: @RawValue Any?,
+    val strDisbanded: String?,
     val strFacebook: String?,
     val strGender: String?,
     val strGenre: String?,
-    val strISNIcode: @RawValue Any?,
+    val strISNIcode: String?,
     val strLabel: String?,
     val strLastFMChart: String?,
     val strLocked: String?,

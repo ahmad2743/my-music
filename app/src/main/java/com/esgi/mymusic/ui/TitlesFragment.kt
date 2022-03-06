@@ -25,6 +25,7 @@ class TitlesFragment : Fragment(), RankingAdapter.onItemClickListener {
     private lateinit var myAdapter: RankingAdapter
     lateinit var linearLayoutManager: LinearLayoutManager
     var res: List<TrendingSingle>? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
